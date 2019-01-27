@@ -39,10 +39,12 @@ describe('Test Case', function() {
     it('check render withData', () => {
         const mockData = mockEmail;
         const wrapper = mount(<ListEmail listEmail={mockData}/>)
-        if (mockData && mockData.length) {
-            expect(wrapper.find('#renderWithData'));
-        } else {
-            expect(wrapper.find('namWrapper')).toHaveLength(0);
-        }
+        expect(wrapper.find('#renderWithData'));
+    });
+
+    it('check render noData', () => {
+        const mockData = [];
+        const wrapper = mount(<ListEmail listEmail={mockData}/>)
+        expect(wrapper.find('namWrapper')).toHaveLength(0);
     });
 });

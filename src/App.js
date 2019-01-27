@@ -4,29 +4,21 @@ import mockEmail from './mock/mockEmail.json';
 import ListEmail from './Component/ListEmail';
 import './Component/css/ListEmail.css';
 import './Component/css/ListEmail2.css';
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import sortBy from 'lodash/sortBy';
 import orderBy from 'lodash/orderBy';
+import HeaderListEmail from './Component/HeaderListEmail';
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
             listEmail: [],
-            isClickFilter: false,
-            dropdownOpen: false
+            isClickFilter: false
         }
-        this.toggle = this.toggle.bind(this);
     }
 
     componentWillMount() {
         this.setState({listEmail: mockEmail});
-    }
-
-    toggle() {
-        this.setState({
-            dropdownOpen: !this.state.dropdownOpen
-        });
     }
 
     handleFilter = (status) => {
@@ -61,21 +53,7 @@ class App extends Component {
     return (
         <div id='layout'>
             <div className="email-list">
-                <div id="appBar" className="email-item" style={{zIndex: 999, backgroundColor: '#fff', height: '80px'}}>
-                    <p className="alignleft">Inbox</p>
-                    <ButtonDropdown id='btnDropdown' className="alignright" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                        <DropdownToggle caret>
-                            Filter
-                        </DropdownToggle>
-                        <DropdownMenu >
-                            <DropdownItem disabled>Sort By</DropdownItem>
-                            <DropdownItem onClick={() => this.handleFilter('subject')}>Subject</DropdownItem>
-                            <DropdownItem onClick={() => this.handleFilter('email')}>Email</DropdownItem>
-                            <DropdownItem onClick={() => this.handleFilter('name')}>Name</DropdownItem>
-                            <DropdownItem onClick={() => this.handleFilter('isread')}>Sort by Unread</DropdownItem>
-                        </DropdownMenu>
-                    </ButtonDropdown>
-                </div>
+               <HeaderListEmail handleFilter={(data) => this.handleFilter(data)} />
                <ListEmail
                    listEmail={listEmail}
                    handleClickRead={(data) => this.handleClickRead(data)}
