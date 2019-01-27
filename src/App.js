@@ -31,15 +31,12 @@ class App extends Component {
 
     handleFilter = (status) => {
         const { listEmail } = this.state;
-        console.log('status:', status);
         let sortData = [];
         if (status !== 'name' && status !== 'email') {
             sortData = sortBy(listEmail, status);
         } else if(status === 'name') {
-            console.log('name Filter')
             sortData = orderBy(listEmail, 'from.name', 'asc');
         } else if(status === 'email') {
-            console.log('email Filter')
             sortData = orderBy(listEmail, 'from.email', 'asc');
         }
         this.setState({listEmail: sortData});

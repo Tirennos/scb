@@ -1,7 +1,8 @@
 import React from 'react';
 import App from './App';
 import ListEmail from './Component/ListEmail';
-import { shallow, mount, render } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import mockEmail from './mock/mockEmail.json';
 
 
 describe('Test Case', function() {
@@ -18,6 +19,30 @@ describe('Test Case', function() {
     it('check render component', () => {
         const component = mount(<ListEmail />);
         expect(component.length).toBe(1);
-    })
+    });
 
+    it('check handleFilter', () => {
+        const wrapper = shallow(<App />)
+        wrapper.instance().handleFilter('name');
+        expect(wrapper.state().listEmail);
+
+        wrapper.instance().handleFilter('email');
+        expect(wrapper.state().listEmail);
+
+        wrapper.instance().handleFilter('isread');
+        expect(wrapper.state().listEmail);
+
+        wrapper.instance().handleFilter('subject');
+        expect(wrapper.state().listEmail);
+    });
+
+    it('check render withData', () => {
+        const mockData = mockEmail;
+        const wrapper = mount(<ListEmail listEmail={mockData}/>)
+        if (mockData && mockData.length) {
+            expect(wrapper.find('#renderWithData'));
+        } else {
+            expect(wrapper.find('#nam')).toHaveLength(1);
+        }
+    });
 });

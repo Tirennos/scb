@@ -22,7 +22,6 @@ class ListEmail extends Component {
 
     onClickRead = (readList) => {
         const { handleClickRead } = this.props;
-        console.log('readList:', readList);
         handleClickRead(readList);
     }
 
