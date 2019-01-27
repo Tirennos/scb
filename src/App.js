@@ -62,7 +62,7 @@ class App extends Component {
         <div id='layout'>
             <div className="email-list">
                 <div id="appBar" className="email-item" style={{zIndex: 999, backgroundColor: '#fff', height: '80px'}}>
-                    <p className="alignleft">Inbex</p>
+                    <p className="alignleft">Inbox</p>
                     <ButtonDropdown id='btnDropdown' className="alignright" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                         <DropdownToggle caret>
                             Filter

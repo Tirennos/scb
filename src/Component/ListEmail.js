@@ -47,8 +47,8 @@ class ListEmail extends Component {
                             break;
                         }
                     return (
-                        <div id='nam'
-                             className="email-item selected"
+                        <div id='namWrapper'
+                             className="email-item selected namWrapper"
                              key={key}
                              onClick={() => {this.onClickRead(data.from.email)}}>
                             <div className="image" style={{backgroundColor: bgColor}}>
@@ -71,7 +71,7 @@ class ListEmail extends Component {
 
     renderNoData = () => {
         return (
-            <div id='nam' className="email-item selected" style={{backgroundColor: '#eee', textAlign: 'center'}}>
+            <div id='namWrapper' className="email-item selected namWrapper" style={{backgroundColor: '#eee', textAlign: 'center'}}>
                 <div id='renderNoData' className="email-item__subject " >{'Nothing to see here, great job!'}</div>
             </div>
         )

@@ -42,7 +42,7 @@ describe('Test Case', function() {
         if (mockData && mockData.length) {
             expect(wrapper.find('#renderWithData'));
         } else {
-            expect(wrapper.find('#nam')).toHaveLength(1);
+            expect(wrapper.find('namWrapper')).toHaveLength(0);
         }
     });
 });
